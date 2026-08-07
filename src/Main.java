@@ -2,27 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class Alumno {
-    private String carnet;
-    private String nombreCompleto;
-
-    public Alumno(String carnet, String nombreCompleto) {
-        this.carnet = carnet;
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public String getCarnet() {
-        return carnet;
-    }
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-}
-
 void main() {
     Scanner scanner = new Scanner(System.in);
-    List<Alumno> alumnos = new ArrayList<>();
+    GestorAlumnos gestorAlumnos = new GestorAlumnos();
     String respuesta;
 
     System.out.println("=== SISTEMA DE REGISTRO - UDB VIRTUAL (POO) ===");
@@ -38,27 +20,24 @@ void main() {
                     System.out.print("\nIngrese el carnet del alumno: ");
                     String carnet = scanner.nextLine().trim();
 
-                    Alumno alumno = alumnos.stream()
-                            .filter(a -> Objects.equals(a.carnet, carnet))
-                            .findFirst()
-                            .orElse(null);
+                    // ver si ya hay un alumno registrado con ese carnet
+                    Alumno alumno = gestorAlumnos.obtenerAlumnoPorCarnet(carnet);
 
                     if (alumno != null) {
                         System.out.println("El alumno que esta intentando registrar ya existe en el sistema");
                         System.out.print("\n¿Volver a ingresar carnet? (s/n): ");
-                        respuesta = scanner.nextLine().trim();
                     } else {
                         System.out.print("Ingrese el nombre completo del alumno: ");
                         String nombreCompleto = scanner.nextLine().trim();
 
-                        // Instanciación y almacenamiento del alumno
-                        alumnos.add(new Alumno(carnet, nombreCompleto));
+                        // agregar alumno
+                        gestorAlumnos.agregarAlumno(carnet, nombreCompleto);
 
                         // Mensaje requerido
                         System.out.println("Alumno ingresado exitosamente");
                         System.out.print("\n¿Desea ingresar otro alumno? (s/n): ");
-                        respuesta = scanner.nextLine().trim();
                     }
+                    respuesta = scanner.nextLine().trim();
 
                 } while (respuesta.equalsIgnoreCase("s"));
                 break;
