@@ -47,10 +47,10 @@ void main() {
 
                 Alumno alumnoEncontrado = gestorAlumnos.obtenerAlumnoPorCarnet(carnetBuscar);
 
-                if (alumnoEncontrado != null){
-               System.out.println("\n===ALUMNO ENCONTRADO===");
-               System.out.println("Carnet: " + alumnoEncontrado.getCarnet());
-               System.out.println("Nombre completo: " + alumnoEncontrado.getNombreCompleto());
+                if (alumnoEncontrado != null) {
+                    System.out.println("\n===ALUMNO ENCONTRADO===");
+                    System.out.println("Carnet: " + alumnoEncontrado.getCarnet());
+                    System.out.println("Nombre completo: " + alumnoEncontrado.getNombreCompleto());
                 } else {
                     System.out.println("Alumno no encontrado, no se puede mostrar");
                 }
