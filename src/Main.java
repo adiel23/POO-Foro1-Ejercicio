@@ -41,6 +41,20 @@ void main() {
 
                 } while (respuesta.equalsIgnoreCase("s"));
                 break;
+            case "2":
+                System.out.print("\ningrese el carnet del alumno a buscar:");
+                String carnetBuscar = scanner.nextLine().trim();
+
+                Alumno alumnoEncontrado = gestorAlumnos.obtenerAlumnoPorCarnet(carnetBuscar);
+
+                if (alumnoEncontrado != null) {
+                    System.out.println("\n===ALUMNO ENCONTRADO===");
+                    System.out.println("Carnet: " + alumnoEncontrado.getCarnet());
+                    System.out.println("Nombre completo: " + alumnoEncontrado.getNombreCompleto());
+                } else {
+                    System.out.println("Alumno no encontrado, no se puede mostrar");
+                }
+                break;
             default:
                 System.out.println("ingrese un valor valido");
                 respuesta = "s";
