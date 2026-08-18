@@ -20,4 +20,19 @@ public class GestorAlumnos {
         Alumno alumno = new Alumno(carnet, nombreCompleto);
         this.alumnos.add(alumno);
     }
+    
+        /*Metodo para poder buscar por carnet o nombre completo*/
+    public Alumno obtenerAlumnoPorCarnetONombre(String texto) {
+    return alumnos.stream()
+            .filter(a -> Objects.equals(a.getCarnet(), texto)
+                      || (a.getNombreCompleto() != null && a.getNombreCompleto().equalsIgnoreCase(texto)))
+            .findFirst()
+            .orElse(null);
+    }
+    /*Metodo para poder borrar al alumno*/
+        public boolean eliminarAlumnoPorCarnet(String carnet) {
+        return alumnos.removeIf(a -> Objects.equals(a.getCarnet(), carnet));
+    }
+
 }
+
