@@ -55,6 +55,25 @@ void main() {
                     System.out.println("Alumno no encontrado, no se puede mostrar");
                 }
                 break;
+                
+            case "3":
+                String alumnoABorrar;
+                System.out.print("Ingrese numero de carnet o nombre completo: ");
+                alumnoABorrar = scanner.nextLine() .trim();
+                
+                if (alumnoABorrar.isEmpty()){
+                    System.out.print("Ingresa el numero de Carnet o nombre completo correcto"); 
+                } else { 
+                    Alumno alumno = gestorAlumnos.obtenerAlumnoPorCarnetONombre(alumnoABorrar);
+                    if (alumno != null) { 
+                        gestorAlumnos.eliminarAlumnoPorCarnet(alumno.getCarnet());
+                        System.out.println("Alumno Eliminado");
+                    } else {
+                        System.out.println("Alumno no encontrado, no se puede eliminar");
+                    }
+                 }
+                break;
+                
             default:
                 System.out.println("ingrese un valor valido");
                 respuesta = "s";
