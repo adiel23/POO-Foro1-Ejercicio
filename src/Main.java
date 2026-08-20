@@ -70,7 +70,24 @@ void main() {
                         System.out.println("Alumno Eliminado");
                     } else {
                         System.out.println("Alumno no encontrado, no se puede eliminar");
+                    } 
+                    case "4":
+                // literal 4: mostrar todos los alumnos
+                List<Alumno> lista = gestorAlumnos.obtenerAlumnos();
+
+                if (lista == null || lista.isEmpty()) {
+                    System.out.println("\nNo hay alumnos registrados actualmente");
+                } else {
+                    System.out.println("\n=== LISTA DE ALUMNOS ===");
+                    for (Alumno a : lista) {
+                        System.out.println("Carnet: " + a.getCarnet() + " | Nombre: " + a.getNombreCompleto());
                     }
+                }
+                break;
+
+            case "5":
+                System.out.println("Saliendo del programa...");
+                return;
                  }
                 break;
                 
